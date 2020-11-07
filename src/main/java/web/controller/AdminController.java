@@ -31,10 +31,9 @@ public class AdminController {
 
     @GetMapping(value = "/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") Long id) {
-        User user = userService.getUserById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edit");
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("user", userRepository.getOne(id));
         return modelAndView;
     }
 
